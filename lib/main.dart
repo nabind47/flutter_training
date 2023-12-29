@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_class/contact_page.dart';
+import 'package:flutter_class/features/contacts/contact_page.dart';
+import 'package:flutter_class/features/dashboard/dashboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
-      home: const ContactPage(),
+      // home: const ContactPage(),
+      home:const Dashboard()
     );
   }
 }

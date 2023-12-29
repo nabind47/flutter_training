@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/constants/app_strings.dart';
-import 'package:flutter_class/contact_details.dart';
+import 'package:flutter_class/features/contacts/contact_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatefulWidget {
