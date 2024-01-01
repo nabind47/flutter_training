@@ -3,6 +3,8 @@ import 'package:flutter_class/constants/app_strings.dart';
 import 'package:flutter_class/features/contacts/contact_details.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../constants/app_methods.dart';
+
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
 
@@ -39,11 +41,7 @@ class _ContactPageState extends State<ContactPage> {
       required String email,
       required String contact,
       String? address}) {
-    Future<void> launchCaller({required String actionMsg}) async {
-      if (!await launchUrl(Uri.parse(actionMsg))) {
-        throw Exception('Could not launch $actionMsg');
-      }
-    }
+
 
     return Padding(
       padding: const EdgeInsets.all(12.0),
@@ -65,12 +63,12 @@ class _ContactPageState extends State<ContactPage> {
               children: [
                 IconButton(
                     onPressed: () {
-                      launchCaller(actionMsg: "tel:+977 $contact");
+                      AppMethods.launchCaller(actionMsg: "tel:+977 $contact");
                     },
                     icon: const Icon(Icons.call)),
                 IconButton(
                     onPressed: () {
-                      launchCaller(actionMsg: "mailto: $email");
+                      AppMethods.launchCaller(actionMsg: "mailto: $email");
                     },
                     icon: const Icon(Icons.mail)),
               ],
