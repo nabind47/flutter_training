@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_class/features/auth/login_page.dart';
 import 'package:flutter_class/features/contacts/contact_page.dart';
 import 'package:flutter_class/features/home/home_page.dart';
 
@@ -35,9 +36,10 @@ class _DashboardState extends State<Dashboard> {
               activeIcon: Icon(Icons.contacts_outlined),
               label: "Contacts"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              activeIcon: Icon(Icons.settings_outlined),
-              label: "Settings"),
+              icon: Icon(Icons.security),
+              activeIcon: Icon(Icons.security_outlined),
+              label: "Authentication"),
+
           //   BottomNavigationBarItem(
           //       icon: SvgPicture.asset("assets/dashboard/contact_outlined.svg"),
           //       activeIcon: SvgPicture.asset("assets/dashboard/contact.svg"),
@@ -58,7 +60,7 @@ class _DashboardState extends State<Dashboard> {
       case 1:
         return const ContactPage();
       case 2:
-        return const Text("Settings");
+        return  const LoginPage();
       default:
         return Container();
     }
