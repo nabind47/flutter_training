@@ -38,6 +38,7 @@ dependencies:
   url_launcher: ^6.2.2
   flutter_svg: ^2.0.9
   font_awesome_flutter: ^10.6.0
+  dio: ^5.4.0
 
 dev_dependencies:
   flutter_test:

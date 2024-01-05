@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_class/features/auth/login_page.dart';
 import 'package:flutter_class/features/contacts/contact_page.dart';
 import 'package:flutter_class/features/home/home_page.dart';
+import 'package:flutter_class/features/top_headlines/top_headlines_page.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -56,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
   Widget dashboardBody(int bottomNavIndex) {
     switch (bottomNavIndex) {
       case 0:
-        return const HomePage();
+        return const Healines();
       case 1:
         return const ContactPage();
       case 2:
