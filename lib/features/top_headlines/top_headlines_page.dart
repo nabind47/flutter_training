@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/config/network/network_request.dart';
 import 'package:flutter_class/features/top_headlines/headline_model.dart';
+import 'package:flutter_class/features/top_headlines/news_card.dart';
+import 'package:flutter_class/features/top_headlines/news_details.dart';
 
 class Healines extends StatefulWidget {
   const Healines({super.key});
@@ -20,22 +22,24 @@ class _HealinesState extends State<Healines> {
               if (snapshot.hasData) {
                 var result = snapshot.data ?? [];
                 return ListView.builder(
-                  itemCount: result.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context,index) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(children: [
-                          Text(result[index].content ?? ""),
-                          // Image(image: Image.network(result[index].urlToImage));
-                        ]),
-                      ),
-                    );
-                  }
-                );
-
+                    itemCount: result.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      NewsDetails(result:result[index])));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: NewsCard(result: result[index]),
+                        ),
+                      );
+                    });
               } else if (snapshot.hasError) {
                 return const Center(child: Text("Error fetching data!!"));
               } else {
