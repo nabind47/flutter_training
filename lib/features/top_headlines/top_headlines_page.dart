@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_class/config/network/network_request.dart';
 import 'package:flutter_class/features/top_headlines/headline_model.dart';
 import 'package:flutter_class/features/top_headlines/news_card.dart';
-import 'package:flutter_class/features/top_headlines/news_details.dart';
 
 class Healines extends StatefulWidget {
   const Healines({super.key});
@@ -26,18 +25,9 @@ class _HealinesState extends State<Healines> {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      NewsDetails(result:result[index])));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: NewsCard(result: result[index]),
-                        ),
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: NewsCard(result: result[index]),
                       );
                     });
               } else if (snapshot.hasError) {
