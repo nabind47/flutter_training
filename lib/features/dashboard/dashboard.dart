@@ -22,6 +22,7 @@ class _DashboardState extends State<Dashboard> {
       body: dashboardBody(_bottomNavIndex),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _bottomNavIndex,
+        type: BottomNavigationBarType.fixed,
         onTap: (index) {
           setState(() {
             _bottomNavIndex = index;
@@ -33,6 +34,10 @@ class _DashboardState extends State<Dashboard> {
               activeIcon: Icon(Icons.home),
               label: "Home"),
           BottomNavigationBarItem(
+              icon: Icon(Icons.newspaper),
+              activeIcon: Icon(Icons.newspaper_outlined),
+              label: "News"),
+          BottomNavigationBarItem(
               icon: Icon(Icons.contacts),
               activeIcon: Icon(Icons.contacts_outlined),
               label: "Contacts"),
@@ -40,15 +45,6 @@ class _DashboardState extends State<Dashboard> {
               icon: Icon(Icons.security),
               activeIcon: Icon(Icons.security_outlined),
               label: "Authentication"),
-
-          //   BottomNavigationBarItem(
-          //       icon: SvgPicture.asset("assets/dashboard/contact_outlined.svg"),
-          //       activeIcon: SvgPicture.asset("assets/dashboard/contact.svg"),
-          //       label: "Home"),
-          //   BottomNavigationBarItem(
-          //       icon: SvgPicture.asset("assets/dashboard/contact_outlined.svg"),
-          //       activeIcon: SvgPicture.asset("assets/dashboard/contact.svg"),
-          //       label: "Contact"),
         ],
       ),
     );
@@ -57,11 +53,13 @@ class _DashboardState extends State<Dashboard> {
   Widget dashboardBody(int bottomNavIndex) {
     switch (bottomNavIndex) {
       case 0:
-        return const Healines();
+        return const HomePage();
       case 1:
-        return const ContactPage();
+        return const TopHeadlines();
       case 2:
-        return  const LoginPage();
+        return const ContactPage();
+      case 3:
+        return const LoginPage();
       default:
         return Container();
     }

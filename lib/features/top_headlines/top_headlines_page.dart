@@ -3,14 +3,14 @@ import 'package:flutter_class/config/network/network_request.dart';
 import 'package:flutter_class/features/top_headlines/headline_model.dart';
 import 'package:flutter_class/features/top_headlines/news_card.dart';
 
-class Healines extends StatefulWidget {
-  const Healines({super.key});
+class TopHeadlines extends StatefulWidget {
+  const TopHeadlines({super.key});
 
   @override
-  State<Healines> createState() => _HealinesState();
+  State<TopHeadlines> createState() => _TopHeadlinesState();
 }
 
-class _HealinesState extends State<Healines> {
+class _TopHeadlinesState extends State<TopHeadlines> {
   @override
   Widget build(BuildContext context) {
     return ListView(
