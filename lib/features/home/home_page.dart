@@ -29,18 +29,23 @@ class _HomePageState extends State<HomePage> {
                   return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 10,
+                      itemCount: 100,
                       itemBuilder: (context, index) {
                         return Card(
-                          child: Container(
-                            height: 200,
-                            child: Image.network(
-                              // "https://th.bing.com/th/id/R.4c0dad47f8ae646eb159556b0cee4ca9?rik=RTrM15kQDNzB5w&pid=ImgRaw&r=0",
-                              res[index],
-                              errorBuilder: (BuildContext context, Object error,
-                                  StackTrace? stackTrace) {
-                                return const SizedBox.shrink(); // You can customize this to show a placeholder or an error message.
-                              },
+                          child: SizedBox(
+                            height: 250,
+                            child: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Image.network(
+
+                                // "https://th.bing.com/th  /id/R.4c0dad47f8ae646eb159556b0cee4ca9?rik=RTrM15kQDNzB5w&pid=ImgRaw&r=0",
+                                res[index],
+                                fit: BoxFit.fill,
+                                errorBuilder: (BuildContext context, Object error,
+                                    StackTrace? stackTrace) {
+                                  return const SizedBox.shrink(); // You can customize this to show a placeholder or an error message.
+                                },
+                              ),
                             ),
                           ),
                         );
@@ -48,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                 } else if (snapshot.hasError) {
                   return const Center(child: Text("Error fetching data!!"));
                 } else {
-                  return Center(child: const CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 }
               })
         ],
