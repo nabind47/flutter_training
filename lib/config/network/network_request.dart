@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter_class/config/network/api_endpoints.dart';
 import 'package:flutter_class/features/home/dogs_breed_model.dart';
+import 'package:flutter_class/features/movies/movies_model.dart';
 import 'package:flutter_class/features/top_headlines/headline_model.dart';
 
 class NetworkRequest {
@@ -9,7 +12,7 @@ class NetworkRequest {
   Future<List<Articles>?> getTopHeadings() async {
     final response = await dio.get(ApiEndpoints.topHeadlines);
 
-    if(response.statusCode == 200 || response.statusCode == 201){
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return HeadlineModel.fromJson(response.data).articles;
     } else {
       return [];
@@ -19,10 +22,27 @@ class NetworkRequest {
   Future<DogsBreedModel>? getDogBreeds() async {
     final response = await dio.get(ApiEndpoints.dogsBreed);
 
-    if(response.statusCode == 200 || response.statusCode == 201){
+    if (response.statusCode == 200 || response.statusCode == 201) {
       return DogsBreedModel.fromJson(response.data);
     } else {
       return DogsBreedModel();
     }
   }
+
+  Future<MoviesModel?> getMovies() async {
+    final response = await dio.get(ApiEndpoints.movies,
+        options: Options(headers: {
+          HttpHeaders.authorizationHeader:
+          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNTRiNzI0YTAwODQ3OGMyZTQ3NjI2MzYzMjYxNmQwOCIsInN1YiI6IjYxYmU5NTFhNjk5ZmI3MDA5NzVlNTJkYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.86XlFAqjy1xg6KahHCzGUZMo5I3nvhRs-31woh3jbp4'
+        }));
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return MoviesModel.fromJson(response.data);
+    } else {
+      // If the request was not successful, return null or handle the error accordingly
+      print('Error fetching movies: ${response.statusCode}');
+      return null;
+    }
+  }
+
 }

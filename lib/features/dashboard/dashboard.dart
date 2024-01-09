@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_class/features/auth/login_page.dart';
 import 'package:flutter_class/features/contacts/contact_page.dart';
 import 'package:flutter_class/features/home/home_page.dart';
+import 'package:flutter_class/features/movies/movies_page.dart';
 import 'package:flutter_class/features/top_headlines/top_headlines_page.dart';
 
 class Dashboard extends StatefulWidget {
@@ -45,6 +46,10 @@ class _DashboardState extends State<Dashboard> {
               icon: Icon(Icons.security),
               activeIcon: Icon(Icons.security_outlined),
               label: "Authentication"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.local_movies),
+              activeIcon: Icon(Icons.local_movies_outlined),
+              label: "Movies"),
         ],
       ),
     );
@@ -60,6 +65,8 @@ class _DashboardState extends State<Dashboard> {
         return const ContactPage();
       case 3:
         return const LoginPage();
+      case 4:
+        return const MoviesPage();
       default:
         return Container();
     }
