@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/features/auth/login_page.dart';
 import 'package:flutter_class/features/contacts/contact_page.dart';
+import 'package:flutter_class/features/counter/counter_page.dart';
 import 'package:flutter_class/features/home/home_page.dart';
 import 'package:flutter_class/features/movies/movies_page.dart';
 import 'package:flutter_class/features/top_headlines/top_headlines_page.dart';
@@ -43,9 +44,9 @@ class _DashboardState extends State<Dashboard> {
               activeIcon: Icon(Icons.contacts_outlined),
               label: "Contacts"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.security),
-              activeIcon: Icon(Icons.security_outlined),
-              label: "Authentication"),
+              icon: Icon(Icons.heart_broken),
+              activeIcon: Icon(Icons.heart_broken_outlined),
+              label: "Counter"),
           BottomNavigationBarItem(
               icon: Icon(Icons.local_movies),
               activeIcon: Icon(Icons.local_movies_outlined),
@@ -64,8 +65,9 @@ class _DashboardState extends State<Dashboard> {
       case 2:
         return const ContactPage();
       case 3:
-        return const LoginPage();
+        return const CounterPage();
       case 4:
+
         return const MoviesPage();
       default:
         return Container();

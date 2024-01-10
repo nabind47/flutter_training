@@ -109,4 +109,19 @@ class _ContactPageState extends State<ContactPage> {
 
 ## Stream
 
+
+```shell
+ctrl + shift + -/+
+```
+
+
+```dart
+void initState(){
+  print("Inside the init method");
+  super.initState();
+}
+```
+> Hot Restart -> main.dart 
+> Hot Reload -> file -> build method
+
 > [flutter url launcher](https://pub.dev/packages/url_launcher)
