@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/features/calculator/calculator_page.dart';
 import 'package:flutter_class/features/dashboard/dashboard.dart';
+import 'package:flutter_class/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink)),
-      // home:const Dashboard()
-      home: const Calculator(),
+      home: const Home(),
     );
   }
 }
