@@ -116,8 +116,10 @@ ctrl + shift + -/+
 
 
 ```dart
+
 void initState(){
-  print("Inside the init method");
+  print("Inside the init method"
+      "");
   super.initState();
 }
 ```
@@ -125,3 +127,20 @@ void initState(){
 > Hot Reload -> file -> build method
 
 > [flutter url launcher](https://pub.dev/packages/url_launcher)
+
+
+```dart
+            InkWell(
+              onTap: ()async{
+                SharedPreferences sp =  await SharedPreferences.getInstance();
+                sp.setString("name", "Nabin Dhami");
+                print(sp.getString("name"));
+                sp.remove("name");
+                print(sp.getString("name"));
+              },
+)
+```
+
+```dart
+appBar: AppBar(title: Text("Authentication"), centerTitle: true, automaticallyImplyLeading: false,),
+```
