@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_class/home_screen.dart';
 import 'package:flutter_class/login_screen.dart';
+import 'package:flutter_class/student_screen.dart';
+import 'package:flutter_class/teacher_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,12 +26,26 @@ class _SplashScreenState extends State<SplashScreen> {
   void isLogin() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     bool isLogin = sp.getBool("isAuthenticated") ?? false;
+    String role = sp.getString("role") ?? "";
 
     if (isLogin) {
-      Timer(Duration(seconds: 5), () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
-      });
+      if (role == "student")
+        Timer(Duration(seconds: 5), () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const StudentScreen()));
+        });
+      else if (role == "teacher"){
+        Timer(Duration(seconds: 5), () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const TeacherScreen()));
+        });
+      }
+      else {
+        Timer(Duration(seconds: 5), () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()));
+        });
+      }
     } else {
       Timer(Duration(seconds: 5), () {
         Navigator.push(context,

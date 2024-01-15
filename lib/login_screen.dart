@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_class/home_screen.dart';
+import 'package:flutter_class/student_screen.dart';
+import 'package:flutter_class/teacher_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,7 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final formData = GlobalKey<FormState>();
 
   final emailController = TextEditingController();
-  final ageController = TextEditingController();
+  final roleController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
@@ -38,9 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 10,
             ),
             TextFormField(
-              decoration: const InputDecoration(hintText: "Age"),
-              controller: ageController,
-              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(hintText: "Role"),
+              controller: roleController,
             ),
             const SizedBox(
               height: 10,
@@ -56,11 +57,20 @@ class _LoginScreenState extends State<LoginScreen> {
               onTap: () async {
                 SharedPreferences sp = await SharedPreferences.getInstance();
                 sp.setString("email", emailController.text.toString());
-                sp.setString("age", ageController.text.toString());
+                sp.setString("role", roleController.text.toString());
+                // sp.setString("role", "student");
                 sp.setBool("isAuthenticated", true);
 
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                if (sp.getString("role") == "student") {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => StudentScreen()));
+                } else if (sp.getString("role") == "teacher") {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TeacherScreen()));
+                } else {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                }
               },
               child: Container(
                 height: 50,
